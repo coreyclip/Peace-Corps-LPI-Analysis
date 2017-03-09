@@ -1,14 +1,13 @@
 
 from sys import argv
 
-script, new_file = argv
+script, new_file, master_file = argv
 
 cohort = input("Which cohort is this volunteer? please enter in as a number for example 3 or 4 not 'four' ")
 date = input("When was this file received? please input as DD/MM/YY")
 
 print("Ok processing....")
 import pandas as pd
-new_file = '/Users/Coreyclip/Desktop/Peace Corps/LPI Project/Data Sheets/K3/LPI Entry Sheet - CEng.xlsx'
 meta = pd.read_excel(new_file, sheetname='General Statistics')
 df = pd.read_excel(new_file, sheetname='Student Results')
 
@@ -37,7 +36,7 @@ else:
 master = master.append(df, verify_integrity=True, ignore_index=True)
 master = master.dropna(axis=0, how='all')
 
-master.to_csv('/Users/coreyclip/Desktop/test.csv')
+master.to_csv('master_filepath')
 
 advice = {"don't trust that fart", "beware of happy shooting", "whereabouts brings the best out!", "V is for volunteer, R is for Robust, F is for faithful, Volunteers who are robust and faithful complete their VRFs on time!", ""}
 
